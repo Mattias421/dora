@@ -94,7 +94,7 @@ class SlurmConfig:
     exclude: tp.Optional[str] = None
     qos: tp.Optional[str] = None
     account: tp.Optional[str] = None
-    slurm_srun_args: tp.Optional[tp.List[str]] = None
+    srun_args: tp.Optional[tp.List[str]] = None
     dependents: int = 0
 
 
