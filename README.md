@@ -1,4 +1,4 @@
-# Dora The Explorer, a friendly experiment manager
+# Swiper, the sneaky experiment sweeper
 
 ![tests badge](https://github.com/facebookresearch/dora/workflows/tests/badge.svg)
 ![linter badge](https://github.com/facebookresearch/dora/workflows/linter/badge.svg)
