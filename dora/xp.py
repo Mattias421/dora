@@ -41,7 +41,7 @@ def _get_sig_str(original_sig: str):
     rgb = tuple(int(colour_hex[i:i+2], 16) for i in (0, 2, 4))
     colour_str = convert_rgb_to_names(rgb)
 
-    with open('pokemon') as f:
+    with open('pokemon', 'r') as f:
         pokemon = f.readlines()
 
         poki_str = pokemon[int(poki_hex, 16)]
