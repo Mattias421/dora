@@ -223,6 +223,7 @@ class HydraMain(DecoratedMain):
     def _main(self):
         if is_xp():
             run_dir = f"hydra.run.dir={get_xp().folder}"
+            print(f'trying to add {run_dir} to args')
             sys.argv.append(run_dir)
         try:
             return hydra.main(
