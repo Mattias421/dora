@@ -53,7 +53,7 @@ def _get_sig_str(original_sig: str):
 
         poki_str = pokemon[int(poki_hex, 16)]
 
-    return f'{colour_str}{poki_str}'
+    return f'{poki_str}' # only use pokimon
 
 def _get_sig(delta: tp.List[tp.Any]) -> str:
     # Return signature from a jsonable content.
