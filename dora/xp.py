@@ -15,11 +15,27 @@ from .conf import DoraConfig
 from .link import Link
 from .utils import jsonable
 
+import webcolors
+
+
+def _get_sig_str(original_sig: str):
+    # convert hash to colour + pokemon string
+    colour_hex, poki_hex = original_sig[:6], original_sig[6:]
+
+    colour_str = webcolors.hex_to_name(f'#{colour_hex}')
+
+    with open('pokemon') as f:
+        pokemon = f.readlines()
+
+        poki_str = pokemon[int(poki_hex, 16)]
+
+    return f'{colour_str}{poki_str}'
 
 def _get_sig(delta: tp.List[tp.Any]) -> str:
     # Return signature from a jsonable content.
     sorted_delta = sorted(delta)
-    return sha1(json.dumps(sorted_delta).encode('utf8')).hexdigest()[:8]
+    original_sig = sha1(json.dumps(sorted_delta).encode('utf8')).hexdigest()[:8]
+    return _get_sig_str(original_sig)
 
 
 @dataclass(init=False)
