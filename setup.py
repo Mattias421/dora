@@ -44,7 +44,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(),
-    package_data={"dora": ["py.typed"]},
+    package_data={"dora": ["py.typed", "pokemon.txt"]},
     install_requires=['omegaconf', 'retrying', 'submitit', 'treetable', 'torch'],
     include_package_data=True,
     entry_points={

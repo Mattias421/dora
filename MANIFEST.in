@@ -8,3 +8,4 @@ include Makefile
 include LICENSE
 include requirements.txt
 include dora/py.typed
+include dora/pokemon.txt
