@@ -41,6 +41,10 @@ pip install -U git+https://github.com/Mattias421/dora#egg=dora-search
 pip install -U dora-search
 ```
 
+```
+pip install -U git+https://github.com/Mattias421/swiper#egg=dora-search
+```
+
 ## What's up?
 
 See [the changelog](CHANGELOG.md) for details on releases.
