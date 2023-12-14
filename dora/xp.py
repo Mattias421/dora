@@ -15,14 +15,31 @@ from .conf import DoraConfig
 from .link import Link
 from .utils import jsonable
 
-import webcolors
+from webcolors import css3_hex_to_names, hex_to_rgb
+from scipy.spatial import KDTree
+
+def convert_rgb_to_names(rgb_tuple):
+    
+    # a dictionary of all the hex and their respective names in css3
+    css3_db = css3_hex_to_names
+    names = []
+    rgb_values = []    
+    for color_hex, color_name in css3_db.items():
+        names.append(color_name)
+        rgb_values.append(hex_to_rgb(color_hex))
+    
+    kdt_db = KDTree(rgb_values)    
+    distance, index = kdt_db.query(rgb_tuple)
+
+    return names[index]
 
 
 def _get_sig_str(original_sig: str):
     # convert hash to colour + pokemon string
     colour_hex, poki_hex = original_sig[:6], original_sig[6:]
 
-    colour_str = webcolors.hex_to_name(f'#{colour_hex}')
+    rgb = tuple(int(colour_hex[i:i+2], 16) for i in (0, 2, 4))
+    colour_str = convert_rgb_to_names(rgb)
 
     with open('pokemon') as f:
         pokemon = f.readlines()
