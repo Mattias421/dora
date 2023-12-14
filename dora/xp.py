@@ -46,7 +46,7 @@ def _get_sig_str(original_sig: str):
     current_directory = os.path.dirname(os.path.abspath(__file__))
 
     # Construct the absolute path to the "pokemon" file
-    pokemon_path = os.path.join(current_directory, 'pokemon')
+    pokemon_path = os.path.join(current_directory, 'pokemon.txt')
 
     with open(pokemon_path, 'r') as f:
         pokemon = f.readlines()
