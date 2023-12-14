@@ -17,6 +17,7 @@ from .utils import jsonable
 
 from webcolors import CSS3_HEX_TO_NAMES, hex_to_rgb
 from scipy.spatial import KDTree
+import os
 
 def convert_rgb_to_names(rgb_tuple):
     
@@ -41,7 +42,13 @@ def _get_sig_str(original_sig: str):
     rgb = tuple(int(colour_hex[i:i+2], 16) for i in (0, 2, 4))
     colour_str = convert_rgb_to_names(rgb)
 
-    with open('pokemon', 'r') as f:
+    # Get the absolute path of the directory containing this script
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the absolute path to the "pokemon" file
+    pokemon_path = os.path.join(current_directory, 'pokemon')
+
+    with open(pokemon_path, 'r') as f:
         pokemon = f.readlines()
 
         poki_str = pokemon[int(poki_hex, 16)]
