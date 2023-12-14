@@ -223,18 +223,14 @@ class HydraMain(DecoratedMain):
     def _main(self):
         if is_xp():
             run_dir = f"hydra.run.dir={get_xp().folder}"
-            print(f'trying to add {run_dir} to args')
             sys.argv.append(run_dir)
-            print('successfully')
         try:
-            print('returing')
             return hydra.main(
                 config_name=self.config_name,
                 config_path=self.config_path,
                 **self.hydra_kwargs)(self.main)()
         finally:
             if is_xp():
-                print('removing')
                 sys.argv.remove(run_dir)
 
     def _get_config_groups(self) -> tp.List[str]:
